@@ -79,7 +79,7 @@ class MyTripletLossFunc(torch.autograd.Function):
 
   def backward(self, grad_output):
     features, = self.saved_tensors
-    features_np = features.cpu().numpy()
+    features_np = features.cpu().detach().numpy()
     grad_features = features.clone() * 0.0
     grad_features_np = grad_features.cpu().numpy()
 
