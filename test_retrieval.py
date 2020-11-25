@@ -39,7 +39,7 @@ def test(opt, model, testset):
         if 'torch' not in str(type(imgs[0])):
           imgs = [torch.from_numpy(d).float() for d in imgs]
         imgs = torch.stack(imgs).float()
-        imgs = torch.autograd.Variable(imgs).cuda() if torch.cuda.is_avilable() else torch.autograd.Variable(imgs)
+        imgs = torch.autograd.Variable(imgs).cuda() if torch.cuda.is_available() else torch.autograd.Variable(imgs)
         mods = [t.decode('utf-8') for t in mods]
         f = model.compose_img_text(imgs, mods).data.cpu().numpy()
         all_queries += [f]
